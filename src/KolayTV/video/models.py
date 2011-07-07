@@ -13,7 +13,9 @@ class Video(models.Model):
     pub_date = models.DateTimeField(default = datetime.datetime.now)
     featured = models.BooleanField(default = False)
     like = models.BooleanField(default = False)
-    comments= models.CharField(max_length = 1000)
+    like_counter_video = models.IntegerField()
+    comments= models.TextField(max_length = 1000, unique = False)
+    
     class Meta:
         ordering =['-pub_date']
         
