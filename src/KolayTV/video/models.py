@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Video(models.Model):
+    videoID = models.IntegerField()
     title = models.CharField(max_length =50)
     caption = models.CharField(max_length = 250)
     tags = models.CharField(max_length = 30)
@@ -14,7 +15,6 @@ class Video(models.Model):
     featured = models.BooleanField(default = False)
     like = models.BooleanField(default = False)
     like_counter_video = models.IntegerField()
-    comments= models.TextField(max_length = 1000, unique = False)
     
     class Meta:
         ordering =['-pub_date']
@@ -27,4 +27,7 @@ class Video(models.Model):
     
     def  save(self,force_insert=False, force_update=False):
         super(Video, self).save(force_insert,force_update)
-        
+class Comment(models.Model ,):
+    author = models.ForeignKey(User)
+    comment = models.TextField(blank=False,null=True)
+    pub_date = models.DateTimeField(default = datetime.datetime.now, editable =False)

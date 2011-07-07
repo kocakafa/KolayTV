@@ -18,6 +18,8 @@ class Profile(models.Model):
             return ('profile_detail', (),
                     {'username' : self.user.username})
 
+
+
 def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)

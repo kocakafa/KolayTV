@@ -4,3 +4,4 @@ from django.conf import settings
 from profiles.models import *
 from django.views.generic.list_detail import object_list
 from django import forms
+
